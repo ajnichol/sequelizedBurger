@@ -22,4 +22,8 @@ var routes = require("./controllers/burger_controllers.js");
 app.use("/", routes);
 
 //starting our server and listening on port 8080
-app.listen(port);
+db.sequelize.sync({}).then(function() {
+	app.listen(port, function(){
+		console.log("app listening on port " + port);
+	});
+});
