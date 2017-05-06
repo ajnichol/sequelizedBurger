@@ -2,16 +2,18 @@ var express = require("express");
 
 var router = express.Router();
 
-var burger = require("../models/burger.js");
+var db = require("../models");
 
 router.post("/", function(req, res){
-	burger.create(req.body.name, function(){
+	db.burgers.create({
+		burger_name: req.body.name
+		}).then(function(){
 		res.redirect("/");
 	});
 });
 
 router.get("/", function(req, res){
-	burger.read(function(data){
+	db.burgers.findAll({}).then(function(data){
 		console.log(data);
 		var burgerObj = {
 			burgers: data
@@ -22,9 +24,15 @@ router.get("/", function(req, res){
 });
 
 router.post("/:id", function(req, res){
-	var condition = "id = " + req.params.id;
+	var condition = req.params.id;
 
-	burger.update(req.body.devoured, condition, function(){
+	db.burgers.update({
+		devoured: req.body.devoured
+	}, {
+		where: {
+			id: condition
+		}
+	}).then(function() {
 		res.redirect("/");
 	});
 });

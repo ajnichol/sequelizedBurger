@@ -2,6 +2,7 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var methodOverride = require("method-override");
 var exphbs = require("express-handlebars");
+var db = require("./models");
 
 //creating our express server
 var app = express();

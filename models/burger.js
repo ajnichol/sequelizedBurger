@@ -1,8 +1,8 @@
 
 module.exports = function(sequelize, DataTypes){
-	var Burger = sequelize.define("burgers", {
+	var burgers = sequelize.define("burgers", {
 		id: {
-    		type: Sequelize.INTEGER,
+    		type: DataTypes.INTEGER,
     		autoIncrement: true,
 			primaryKey: true
   		},
@@ -19,11 +19,12 @@ module.exports = function(sequelize, DataTypes){
 		},
 		date: {
 			type: DataTypes.DATE
-		}, {
+		}
+	}, {
 			freezeTableName: true,
-			timestamps: false
-		}		
+			timestamps: false		
 	});
+	return burgers;
 };
 
 

@@ -1,5 +1,5 @@
 <div class="text-center">	
-	<img id="burgerImage" alt="burger" src="../public/assets/images/burger.jpg">
+	<img id="burgerImage" alt="burger" src="http://www.clipartbest.com/cliparts/Kcj/XxA/KcjXxAo6i.jpg" style="height: 110px;">
 
 	<h1>Eat-Da-Burger</h1>
 	<div class="container-fluid">
@@ -7,10 +7,10 @@
 			<div class="inside-left">
 				{{#each burgers}}
 					{{#unless this.devoured}}
-						{{this.burger_name}}
+						<h4>{{this.burger_name}}</h4>
 						<form action="/{{this.id}}?_method=POST" method="POST">
 							<input type="hidden" name="devoured" value="true">
-							<button type="submit">Devour it!</button>
+							<button type="submit" class="btn btn-primary">Devour it!</button>
 						</form>
 					{{/unless}}
 				{{/each}}
@@ -19,7 +19,7 @@
 			<div class="inside-right">
 				{{#each burgers}}
 					{{#if this.devoured}}
-						<p>Munch, munch...that {{this.burger_name}} was tasty!</p>
+						<h4>Munch, munch...that {{this.burger_name}} was tasty!</h4>
 					{{/if}}
 				{{/each}}
 			</div>
@@ -31,7 +31,7 @@
 			<textarea type="text" name="name"></textarea>
 		</div>
 
-		<button type="submit">Submit</button>
+		<button type="submit" class="btn btn-primary">Submit</button>
 	</form>
 
 	<p>Enter a burger you want to eat</p>
